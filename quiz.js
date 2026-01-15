@@ -150,6 +150,18 @@ let currentQuestions = []
 let currentIndex = 0
 let answers = []
 
+function updateProgress() {
+  const total = currentQuestions.length
+  const answered = answers.filter(v => v !== null).length
+  const percent = Math.round((answered / total) * 100)
+  const bar = document.getElementById("progress-bar")
+  const progressText = document.getElementById("progress-text")
+  const stepText = document.getElementById("step-text")
+  if (bar) bar.style.width = percent + "%"
+  if (progressText) progressText.textContent = `Progreso: ${answered}/${total}`
+  if (stepText) stepText.textContent = `Pregunta ${Math.min(currentIndex + 1, total)} de ${total}`
+}
+
 function renderQuestion() {
   const container = document.getElementById("quiz")
   container.innerHTML = ""
@@ -175,6 +187,7 @@ function renderQuestion() {
   const result = document.getElementById("result")
   result.style.display = "none"
   result.innerHTML = ""
+  updateProgress()
 }
 
 function evaluateQuiz() {
@@ -193,7 +206,7 @@ function evaluateQuiz() {
   `
   result.style.display = "block"
   setTimeout(() => {
-    window.location.href = "landing.html"
+    window.location.href = "index.html"
   }, 2500)
 }
 
@@ -213,6 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const value = selected ? Number(selected.value) : null
     if (value === null) return
     answers[currentIndex] = value
+    updateProgress()
     if (currentIndex === currentQuestions.length - 1) {
       evaluateQuiz()
     } else {
