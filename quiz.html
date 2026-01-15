@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz — Texto Narrativo (6°)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Juego Académico: Texto Narrativo (6°)</h1>
+    <p class="subtitle">Responde y avanza pregunta por pregunta.</p>
+    <div class="progress-wrapper">
+      <div class="progress-header">
+        <span id="progress-text">Progreso: 0/10</span>
+        <span id="step-text">Pregunta 1 de 10</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+      </div>
+    </div>
+    <div id="quiz"></div>
+    <div class="actions">
+      <button id="next">Siguiente</button>
+    </div>
+    <div id="result" class="result"></div>
+  </main>
+  <script src="quiz.js"></script>
+</body>
+</html>
